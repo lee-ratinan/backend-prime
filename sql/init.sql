@@ -141,3 +141,37 @@ create table user_role
 INSERT INTO user_role (id, user_id, role_name, is_default_role, role_created_by, role_created_at, role_updated_at) VALUES
 (1, 1, 'super-admin', 'N', 1, CURRENT_TIMESTAMP, null),
 (2, 1, 'master-admin', 'Y', 1, CURRENT_TIMESTAMP, null);
+
+# FOREIGN KEYS
+# 1. log_activity
+alter table log_activity
+    add constraint log_activity_user_master_id_fk
+        foreign key (done_by) references user_master (id);
+# 2. log_email
+# 3. organization_master
+alter table organization_master
+    add constraint organization_master_user_master_id_fk
+        foreign key (created_by) references user_master (id);
+# 4. role_access
+alter table role_access
+    add constraint role_access_role_master_id_fk
+        foreign key (role_id) references role_master (id);
+alter table role_access
+    add constraint role_access_user_master_id_fk
+        foreign key (created_by) references user_master (id);
+# 5. role_master
+alter table role_master
+    add constraint role_master_user_master_id_fk
+        foreign key (created_by) references user_master (id);
+# 6. user_master
+alter table user_master
+    add constraint user_master_user_master_id_fk
+        foreign key (user_created_by) references user_master (id);
+# 7. user_role
+alter table user_role
+    add constraint user_role_user_master_id_fk
+        foreign key (user_id) references user_master (id);
+alter table user_role
+    add constraint user_role_user_master_id_fk_2
+        foreign key (role_created_by) references user_master (id);
+

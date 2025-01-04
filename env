@@ -20,7 +20,7 @@ CI_ENVIRONMENT=development
 # APP
 #--------------------------------------------------------------------
 
-app.baseURL=http://127.0.0.1:8888/primer-backoffice/public/
+app.baseURL=http://127.0.0.1:8888/backend-prime/public/
 # If you have trouble with `.`, you could also use `_`.
 # app_baseURL = ''
 # app.forceGlobalSecureRequests = false
@@ -31,12 +31,12 @@ app.baseURL=http://127.0.0.1:8888/primer-backoffice/public/
 #--------------------------------------------------------------------
 
 database.default.hostname=localhost
-database.default.database=primer_backoffice
-database.default.username=root
-database.default.password=root
+database.default.database=xxx
+database.default.username=xxx
+database.default.password=xxx
 database.default.DBDriver=MySQLi
 database.default.DBPrefix=
-database.default.port=8889
+database.default.port=3306
 
 # If you use MySQLi as tests, first update the values of Config\Database::$tests.
 # database.tests.hostname = localhost
@@ -64,6 +64,38 @@ database.default.port=8889
 
 #--------------------------------------------------------------------
 # LOGGER
+# 1 Emergency: system is unusable
+# 2 Alert: action must be taken immediately
+# 3 Critical: critical conditions
+# 4 Error: error conditions
+# 5 Warning: warning conditions
+# 6 Notice: normal but significant condition
+# 7 Info: informational messages
+# 8 Debug: debug-level messages
+# 9 All messages
 #--------------------------------------------------------------------
 
-# logger.threshold = 4
+logger.threshold=9
+
+#--------------------------------------------------------------------
+# MAIL SERVICES - MAILGUN - SANDBOX!!!
+#--------------------------------------------------------------------
+
+# MAIL_SERVICE_FROM_EMAIL=###
+# MAIL_SERVICE_REPLY_EMAIL=###
+# MAILGUN_SERVICE_DOMAIN=###
+# MAILGUN_SERVICE_API_KEY=###
+
+#--------------------------------------------------------------------
+# GOOGLE SIGN-IN CREDENTIALS
+#--------------------------------------------------------------------
+
+# GOOGLE_CLIENT_ID=###
+# GOOGLE_CLIENT_SECRET=###
+
+#--------------------------------------------------------------------
+# CUSTOM LAYOUT FILES
+#--------------------------------------------------------------------
+
+# LAYOUT_FILE_OFFICE=_custom_layout_office
+# LAYOUT_FILE_PUBLIC=_custom_layout_public

@@ -1,0 +1,15 @@
+.idea/*
+.idea/php.xml
+.idea/primer-backoffice.iml
+tests/*
+writable/cache/*
+writable/debugbar/*
+writable/logs/*
+writable/session/*
+writable/uploads/*
+vendor/*
+public/assets/vendor/*
+
+composer.lock
+.env
+/*.zip

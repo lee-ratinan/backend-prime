@@ -169,7 +169,8 @@ $this->extend($layout);
                     },
                     error: function(xhr, status, error) {
                         let response = JSON.parse(xhr.responseText);
-                        $('#error-message-1').html(`<div class="alert alert-danger" role="alert"><i class="fa-solid fa-triangle-exclamation"></i> ${response.toast}</div>`);
+                        response = response.toast ?? '<?= lang('System.status_message.generic_error') ?>';
+                        $('#error-message-1').html(`<div class="alert alert-danger" role="alert"><i class="fa-solid fa-triangle-exclamation"></i> ${response}</div>`);
                         $('#btn-login').prop('disabled', false);
                     }
                 });
@@ -224,9 +225,9 @@ $this->extend($layout);
                         strength++; $('#password-requirement-item-5').removeClass('fa-circle-xmark text-danger').addClass('fa-circle-check text-success');
                     }
                     if (password.match(name_regex)) { // Password must not contain first and/or family name(s).
-                       strength++; $('#password-requirement-item-6').removeClass('fa-circle-xmark text-danger').addClass('fa-circle-check text-success');
+                        strength++; $('#password-requirement-item-6').removeClass('fa-circle-xmark text-danger').addClass('fa-circle-check text-success');
                     } else {
-                       $('#password-requirement-item-6').removeClass('fa-circle-check text-success').addClass('fa-circle-xmark text-danger');
+                        $('#password-requirement-item-6').removeClass('fa-circle-check text-success').addClass('fa-circle-xmark text-danger');
                     }
                     let regex_common = new RegExp('^(?:(?!<?= retrieve_common_password() ?>).)*$', 'i');
                     if (password.match(regex_common)) { // Password must not be too common.
@@ -285,7 +286,8 @@ $this->extend($layout);
                     },
                     error: function(xhr, status, error) {
                         let response = JSON.parse(xhr.responseText);
-                        $('#error-message-2').html(`<div class="alert alert-danger" role="alert"><i class="fa-solid fa-triangle-exclamation"></i> ${response.message}</div>`);
+                        response = response.toast ?? '<?= lang('System.status_message.generic_error') ?>';
+                        $('#error-message-2').html(`<div class="alert alert-danger" role="alert"><i class="fa-solid fa-triangle-exclamation"></i> ${response}</div>`);
                         $('#btn-update-password').prop('disabled', false);
                     }
                 });

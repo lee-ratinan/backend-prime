@@ -97,8 +97,8 @@ function generate_label_column_from_field(string $label, string $value, string $
 function retrieve_app_logo(string $app_name): string
 {
     $clean_name = preg_replace('/[^a-z0-9]/i', '', strtolower($app_name));
-    $file_url   = base_url('file/logo_' . $clean_name . '.jpg');
-    $file_path  = WRITEPATH . 'uploads/logo_' . $clean_name . '.jpg';
+    $file_url   = base_url('file/logo_' . $clean_name . '.png');
+    $file_path  = WRITEPATH . 'uploads/logo_' . $clean_name . '.png';
     if (file_exists($file_path)) {
         return '<img class="img-fluid" src="' . $file_url . '" alt="' . $app_name . '" />';
     }

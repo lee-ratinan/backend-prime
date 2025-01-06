@@ -80,7 +80,7 @@ class Organization extends BaseController
             if ($org_model->update(self::ORG_ID, $data)) {
                 $log_model->insertTableUpdate('organization_master', self::ORG_ID, $data, $session->user_id);
                 if ($data['app_name'] !== $session->app_name) {
-                    $files = WRITEPATH . 'uploads/logo_' . preg_replace('/[^a-z0-9]/i', '', strtolower($session->app_name)) . '.jpg';
+                    $files = WRITEPATH . 'uploads/logo_' . preg_replace('/[^a-z0-9]/i', '', strtolower($session->app_name)) . '.png';
                     $session->set('app_name', $data['app_name']);
                     // remove the old logo
                     if (file_exists($files)) {
@@ -107,7 +107,7 @@ class Organization extends BaseController
                         'is_image[logo]',
                         'mime_in[logo,image/jpg,image/jpeg,image/png]',
                         'max_size[logo,300]',
-                        'max_dims[logo,600,60]',
+                        'max_dims[logo,1000,100]',
                     ],
                 ],
             ];
@@ -125,26 +125,31 @@ class Organization extends BaseController
                 list($width, $height) = getimagesize($img->getPathname());
                 $new_width            = $width;
                 $new_height           = $height;
-                if ($height > 30) {
-                    $ratio = $height / 30;
+                if ($height > 90) {
+                    $ratio = $height / 90;
                     $new_width = $width / $ratio;
-                    $new_height = 30;
+                    $new_height = 90;
                 }
-                if ($new_width > 300) {
-                    $ratio = $new_width / 300;
-                    $new_width = 300;
+                if ($new_width > 600) {
+                    $ratio = $new_width / 600;
+                    $new_width = 600;
                     $new_height = $new_height / $ratio;
                 }
                 $file_type            = $img->getClientMimeType();
-                $file_name            = 'logo_' . preg_replace('/[^a-z0-9]/i', '', strtolower($session->organization['app_name'])) . '.jpg';
+                $file_name            = 'logo_' . preg_replace('/[^a-z0-9]/i', '', strtolower($session->organization['app_name'])) . '.png';
                 if ('image/png' == $file_type) {
                     $source = imagecreatefrompng($img->getPathname());
+                    $destination = imagecreatetruecolor($new_width, $new_height);
+                    imagealphablending($destination, false);
+                    imagesavealpha($destination, true);
+                    $transparentColor = imagecolorallocatealpha($destination, 0, 0, 0, 127);
+                    imagefill($destination, 0, 0, $transparentColor);
                 } else {
                     $source = imagecreatefromjpeg($img->getPathname());
+                    $destination = imagecreatetruecolor($new_width, $new_height);
                 }
-                $destination = imagecreatetruecolor($new_width, $new_height);
                 imagecopyresampled($destination, $source, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-                imagejpeg($destination, WRITEPATH . 'uploads/' . $file_name, 90);
+                imagepng($destination, WRITEPATH . 'uploads/' . $file_name, 0);
                 imagedestroy($source);
                 imagedestroy($destination);
                 $app_logo    = retrieve_app_logo($session->organization['app_name']);

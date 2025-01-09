@@ -169,3 +169,20 @@ function format_phone_number(string $country_code, string $phone_number): string
     }
     return $country_code . $phone_number;
 }
+
+/**
+ * Get role icons
+ * @param string $role
+ * @return string|array
+ */
+function get_role_icons(string $role = ''): string|array
+{
+    $roles = [
+        'super-admin'  => '<i class="fa-solid fa-screwdriver-wrench fa-2x"></i>',
+        'master-admin' => '<i class="fa-brands fa-black-tie fa-2x"></i>',
+    ];
+    if (empty($role)) {
+        return $roles;
+    }
+    return $roles[$role] ?? $role;
+}

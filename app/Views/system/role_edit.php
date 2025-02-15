@@ -17,7 +17,7 @@ $this->extend($layout);
     </div>
     <section class="section">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <div class="card">
                     <div class="card-body pt-3">
                         <h5 class="card-title"><?= $page_title ?></h5>
@@ -27,9 +27,10 @@ $this->extend($layout);
                         echo '<div class="small">' . lang('Role.edit.role_name_note') . '</div>';
                         $role_master_config['role_name']['readonly'] = ('edit' == $mode);
                         $role_master_config['role_name']['disabled'] = ('edit' == $mode);
-                        generate_form_field('id', $role_master_config['id'], @$role_accesses['role_master']['id']);
-                        generate_form_field('role_name', $role_master_config['role_name'], @$role_accesses['role_master']['role_name']);
-                        generate_form_field('role_description', $role_master_config['role_description'], @$role_accesses['role_master']['role_description']);
+                        $fields = ['id', 'role_name', 'role_description'];
+                        foreach ($fields as $field) {
+                            generate_form_field($field, $role_master_config[$field], @$role_accesses['role_master'][$field]);
+                        }
                         ?>
                         <?php if ('edit' == $mode) : ?>
                         <div class="row">

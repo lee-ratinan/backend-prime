@@ -23,26 +23,36 @@ $this->extend($layout);
                         <!-- GENERIC DATA -->
                         <h6><i class="fa-solid fa-user-lock"></i> <?= lang('Organization.heading_1') ?></h6>
                         <?php
+                        $fields_1 = [
+                            'organization_name',
+                            'organization_address_1',
+                            'organization_address_2',
+                            'organization_address_3',
+                            'organization_address_country_code',
+                            'organization_address_postal_code',
+                            'organization_phone_number',
+                            'organization_email_address',
+                            'organization_website_url',
+                        ];
+                        $fields_2 = [
+                            'app_name',
+                            'trade_name',
+                            'registration_number',
+                            'incorporation_date',
+                        ];
                         echo '<h6>' . lang('Organization.contact_information') . '</h6>';
-                        generate_form_field('organization_name', $configurations['organization_name'], $organization['organization_name']);
-                        generate_form_field('organization_address_1', $configurations['organization_address_1'], $organization['organization_address_1']);
-                        generate_form_field('organization_address_2', $configurations['organization_address_2'], $organization['organization_address_2']);
-                        generate_form_field('organization_address_3', $configurations['organization_address_3'], $organization['organization_address_3']);
-                        generate_form_field('organization_address_country_code', $configurations['organization_address_country_code'], $organization['organization_address_country_code']);
-                        generate_form_field('organization_address_postal_code', $configurations['organization_address_postal_code'], $organization['organization_address_postal_code']);
-                        generate_form_field('organization_phone_number', $configurations['organization_phone'], [$organization['organization_phone_country_calling_code'], $organization['organization_phone_number']]);
-                        generate_form_field('organization_email_address', $configurations['organization_email_address'], $organization['organization_email_address']);
-                        generate_form_field('organization_website_url', $configurations['organization_website_url'], $organization['organization_website_url']);
+                        foreach ($fields_1 as $field) {
+                            generate_form_field($field, ('organization_phone_number' == $field ? $configurations['organization_phone'] : $configurations[$field]), ('organization_phone_number' == $field ? [$organization['organization_phone_country_calling_code'], $organization['organization_phone_number']] : $organization[$field]));
+                        }
                         echo '<h6>' . lang('Organization.social_media') . '</h6>';
                         $social_links = json_decode($organization['organization_social_links'], true);
                         foreach ($configurations['organization_social_links'] as $value) {
                             generate_form_field('organization_social_links_' . $value['key'], $value, $social_links[$value['key']] ?? '');
                         }
                         echo '<h6>' . lang('Organization.other_information') . '</h6>';
-                        generate_form_field('app_name', $configurations['app_name'], $organization['app_name']);
-                        generate_form_field('trade_name', $configurations['trade_name'], $organization['trade_name']);
-                        generate_form_field('registration_number', $configurations['registration_number'], $organization['registration_number']);
-                        generate_form_field('incorporation_date', $configurations['incorporation_date'], $organization['incorporation_date']);
+                        foreach ($fields_2 as $field) {
+                            generate_form_field($field, $configurations[$field], $organization[$field]);
+                        }
                         ?>
                         <div class="text-end">
                             <button id="btn-save-changes" type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> <?= lang('Organization.btn_save') ?></button>

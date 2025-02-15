@@ -25,7 +25,8 @@ $this->extend($layout);
                                 <tbody>
                                 <?php foreach ($error_files as $file) : ?>
                                     <?php
-                                    if (in_array($file, ['.', '..', 'index.html'])) {
+                                    // skip if not match log-20\d{2}-\d{2}-\d{2}\.log pattern
+                                    if (!preg_match('/^log-\d{4}-\d{2}-\d{2}\.log$/', $file)) {
                                         continue;
                                     }
                                     $date_part = str_replace(['log-', '.log'], '', $file);

@@ -4,12 +4,12 @@ $layout = (!empty($layout) ? $layout : 'system/_layout_public');
 $this->extend($layout);
 ?>
 <?= $this->section('content') ?>
-    <?php $session = session(); ?>
-    <?php $google_client_id = getenv('GOOGLE_CLIENT_ID'); ?>
-    <?php $use_google_signin = (!empty($google_client_id) && 'production' == getenv('CI_ENVIRONMENT')); ?>
-    <?php if ($use_google_signin) : ?>
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <?php endif; ?>
+<?php $session = session(); ?>
+<?php $google_client_id = getenv('GOOGLE_CLIENT_ID'); ?>
+<?php $use_google_signin = (!empty($google_client_id) && 'production' == getenv('CI_ENVIRONMENT')); ?>
+<?php if ($use_google_signin) : ?>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+<?php endif; ?>
     <div class="d-flex justify-content-center px-5 py-4">
         <?= $session->app_logo ?>
     </div>
@@ -152,6 +152,7 @@ $this->extend($layout);
                         if ('success' === response.status) {
                             $('#otp-form').slideDown();
                             $('#btn-resend-otp').prop('disabled', true);
+                            $('#otp').focus();
                             let seconds = 60;
                             let interval = setInterval(function() {
                                 seconds--;

@@ -41,11 +41,10 @@ $this->extend($layout);
                         <h6><i class="fa-solid fa-user"></i> <?= lang('System.my_profile.profile_data') ?></h6>
                         <?php
                         generate_form_field('telephone_number', $user_config['telephone_number'], [$user_session['telephone_country_calling_code'], $user_session['telephone_number']]);
-                        generate_form_field('user_gender', $user_config['user_gender'], $user_session['user_gender']);
-                        generate_form_field('user_nationality', $user_config['user_nationality'], $user_session['user_nationality']);
-                        generate_form_field('user_date_of_birth', $user_config['user_date_of_birth'], $user_session['user_date_of_birth']);
-                        generate_form_field('user_profile_status', $user_config['user_profile_status'], $user_session['user_profile_status']);
-                        generate_form_field('preferred_language', $user_config['preferred_language'], $user_session['preferred_language']);
+                        $fields = ['user_gender', 'user_nationality', 'user_date_of_birth', 'user_profile_status', 'preferred_language'];
+                        foreach ($fields as $field) {
+                            generate_form_field($field, $user_config[$field], $user_session[$field]);
+                        }
                         ?>
                         <div class="text-end">
                             <button id="btn-save-changes" type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> <?= lang('System.my_profile.save') ?></button>

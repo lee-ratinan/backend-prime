@@ -13,3 +13,4 @@ public/assets/vendor/*
 composer.lock
 .env
 /*.zip
+/public/assets/vendor.zip

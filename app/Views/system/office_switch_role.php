@@ -52,7 +52,7 @@ $this->extend($layout);
             $('#btn-switch').on('click', function (e) {
                 e.preventDefault();
                 if ('' === $('#role').val()) {
-                    toastr.error('<?= lang('System.switch_role.role_required') ?>');
+                    $('#role').focus();
                     return;
                 }
                 $.ajax({

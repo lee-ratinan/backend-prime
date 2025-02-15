@@ -23,18 +23,10 @@ $this->extend($layout);
                         <h5 class="card-title"><?= $page_title ?></h5>
                         <h6><i class="fa-solid fa-user-lock"></i> <?= lang('User.edit.controlled_account_data') ?></h6>
                         <?php
-                        generate_form_field('id', $user_configuration['id'], @$user['id']);
-                        generate_form_field('email_address', $user_configuration['email_address'], @$user['email_address']);
-                        generate_form_field('user_name_first', $user_configuration['user_name_first'], @$user['user_name_first']);
-                        generate_form_field('user_name_family', $user_configuration['user_name_family'], @$user['user_name_family']);
-                        generate_form_field('user_gender', $user_configuration['user_gender'], ($user['user_gender'] ?? 'U'));
-                        generate_form_field('user_nationality', $user_configuration['user_nationality'], ($user['user_nationality'] ?? 'TH'));
-                        generate_form_field('account_status', $user_configuration['account_status'], ($user['account_status'] ?? 'P'));
-                        generate_form_field('account_type', $user_configuration['account_type'], ($user['account_type'] ?? 'S'));
-                        generate_form_field('employee_id', $user_configuration['employee_id'], @$user['employee_id']);
-                        generate_form_field('employee_start_date', $user_configuration['employee_start_date'], @$user['employee_start_date']);
-                        generate_form_field('employee_end_date', $user_configuration['employee_end_date'], @$user['employee_end_date']);
-                        generate_form_field('employee_title', $user_configuration['employee_title'], @$user['employee_title']);
+                        $fields = ['id', 'email_address', 'user_name_first', 'user_name_family', 'user_gender', 'user_nationality', 'account_status', 'account_type', 'employee_id', 'employee_start_date', 'employee_end_date', 'employee_title'];
+                        foreach ($fields as $field) {
+                            generate_form_field($field, $user_configuration[$field], @$user[$field]);
+                        }
                         ?>
                         <div class="text-end">
                             <button class="btn btn-primary btn-sm" id="btn-save-user-master"><i class="fa-solid fa-save"></i> <?= lang('System.menu.save') ?></button>

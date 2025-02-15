@@ -22,7 +22,17 @@ $this->extend($layout);
                     <div class="card-body pt-3">
                         <h5 class="card-title"><?= $page_title ?></h5>
                         <h6><?= lang('Log.file_view.file_name') ?>: <?= $file_name ?></h6>
-                        <pre><?= $file_content ?></pre>
+                        <pre><?php
+                            $lines = explode("\n", $file_content);
+                            foreach ($lines as $line) {
+                                // highlight the log level
+                                $line = preg_replace('/(EMERGENCY|ALERT|CRITICAL|ERROR)/', '<b class="text-danger">$1</b>', $line);
+                                $line = preg_replace('/(ErrorException:)/', '<em class="text-danger">$1</em>', $line);
+                                $line = preg_replace('/(NOTICE|WARNING)/', '<b class="text-warning">$1</b>', $line);
+                                $line = preg_replace('/(DEBUG|INFORMATIONAL)/', '<b class="text-info">$1</b>', $line);
+                                echo $line . "\n";
+                            }
+                            ?></pre>
                     </div>
                 </div>
             </div>

@@ -17,19 +17,8 @@ $this->extend($layout);
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="float-end"><?= get_role_icons($session->current_role) ?></div>
-                        <h2>Your Roles</h2>
-                        <p>You are logged in as <b><?= $session->current_role ?>.</b></p>
-                        <h3>Switch Role</h3>
-                        <div class="row g-3">
-                            <?php foreach ($session->roles as $role): ?>
-                                <?php if ($role == $session->current_role) continue; ?>
-                                <div class="col-6 col-lg-4">
-                                    <button class="btn btn-outline-primary w-100 p-3 btn-switch-role" data-role="<?= $role ?>"><?= get_role_icons($role) ?><br><?= $role ?></button>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
+                    <div class="card-body pt-3">
+                        Anything
                     </div>
                 </div>
             </div>

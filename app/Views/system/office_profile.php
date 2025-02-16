@@ -22,7 +22,6 @@ $this->extend($layout);
                         <div class="float-end">
                             <?= $session->avatar ?>
                         </div>
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <h6><i class="fa-solid fa-user-lock"></i> <?= lang('System.my_profile.controlled_account_data') ?></h6>
                         <div class="row">
                             <div class="col-12"><p><small><?= lang($user_config['email_address']['label_key']) ?></small><br><?= $user_session['email_address'] ?></p></div>

@@ -19,7 +19,6 @@ $this->extend($layout);
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <!-- GENERIC DATA -->
                         <h6><i class="fa-solid fa-user-lock"></i> <?= lang('Organization.heading_1') ?></h6>
                         <?php

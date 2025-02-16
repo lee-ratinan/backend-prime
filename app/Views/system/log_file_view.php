@@ -32,7 +32,7 @@ $this->extend($layout);
             const fileContent = document.getElementById('file-content');
             fileContent.innerHTML = fileContent.innerHTML.replace(/(ERROR|CRITICAL|ALERT|EMERGENCY)/g, '<span class="text-danger">$1</span>');
             fileContent.innerHTML = fileContent.innerHTML.replace(/(WARNING)/g, '<span class="text-warning">$1</span>');
-            fileContent.innerHTML = fileContent.innerHTML.replace(/(DEBUG|INFO)/g, '<span class="text-info">$1</span>');
+            fileContent.innerHTML = fileContent.innerHTML.replace(/(DEBUG|INFO|NOTICE)/g, '<span class="text-info">$1</span>');
         });
     </script>
 <?php $this->endSection() ?>

@@ -18,8 +18,7 @@ $this->extend($layout);
         <div class="row">
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $page_title ?></h5>
+                    <div class="card-body pt-3">
                         <p><?= lang('System.switch_role.current_role_is', [$current_role]) ?></p>
                         <?php if (1 == count($roles)): ?>
                             <p><?= lang('System.switch_role.you_have_1_role') ?></p>

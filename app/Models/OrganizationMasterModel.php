@@ -25,6 +25,7 @@ class OrganizationMasterModel extends Model
         'organization_address_3',
         'organization_address_country_code',
         'organization_address_postal_code',
+        'organization_phone_country_calling_code',
         'organization_phone_number',
         'organization_email_address',
         'organization_website_url',

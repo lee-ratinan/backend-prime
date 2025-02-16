@@ -138,5 +138,8 @@
 <script src="<?= base_url('assets/vendor/DataTables/datatables.min.js') ?>"></script>
 <!-- Template Main JS File -->
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
+<script>
+    $(function () { setTimeout(() => {window.location.href = '<?= base_url('logout') ?>';}, 300000); });
+</script>
 </body>
 </html>

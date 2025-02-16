@@ -20,7 +20,6 @@ $this->extend($layout);
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <h6><i class="fa-solid fa-user-lock"></i> <?= lang('User.edit.controlled_account_data') ?></h6>
                         <?php
                         $fields = ['id', 'email_address', 'user_name_first', 'user_name_family', 'user_gender', 'user_nationality', 'account_status', 'account_type', 'employee_id', 'employee_start_date', 'employee_end_date', 'employee_title'];
@@ -39,41 +38,45 @@ $this->extend($layout);
                             <?php if (empty($user_roles)) : ?>
                                 <div class="alert alert-warning" role="alert"><?= lang('User.edit.no_roles_granted') ?></div>
                             <?php else : ?>
-                                <table class="table table-sm table-striped table-hover">
-                                    <?php foreach ($user_roles as $role_name => $details) : ?>
-                                        <tr>
-                                            <td><?= $role_name ?></td>
-                                            <td>
-                                                <?php if ('N' == $details['is_default_role']) : ?>
-                                                    <button class="btn btn-danger btn-sm btn-revoke-role" <?= $disabled ?> data-user-role-id="<?= $details['id'] ?>"><i class="fa-regular fa-trash-can"></i> <?= lang('System.menu.revoke') ?></button>
-                                                <?php endif; ?>
-                                            </td>
-                                            <td>
-                                                <?php if ('N' == $details['is_default_role']) : ?>
-                                                    <button class="btn btn-primary btn-sm btn-make-default-role" <?= $disabled ?> data-user-role-id="<?= $details['id'] ?>" data-user-id="<?= $user['id'] ?>"><i class="fa-regular fa-star"></i> <?= lang('User.edit.make_default_role') ?></button>
-                                                <?php else: ?>
-                                                    <i class="fa-solid fa-star text-warning"></i> <?= lang('User.edit.default_role') ?>
-                                                <?php endif; ?>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped table-hover">
+                                        <?php foreach ($user_roles as $role_name => $details) : ?>
+                                            <tr>
+                                                <td><?= $role_name ?></td>
+                                                <td style="min-width:100px;">
+                                                    <?php if ('N' == $details['is_default_role']) : ?>
+                                                        <button class="btn btn-danger btn-sm btn-revoke-role" <?= $disabled ?>data-user-role-id="<?= $details['id'] ?>"><i class="fa-regular fa-trash-can"></i> <?= lang('System.menu.revoke') ?></button>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td style="min-width:160px;">
+                                                    <?php if ('N' == $details['is_default_role']) : ?>
+                                                        <button class="btn btn-primary btn-sm btn-make-default-role" <?= $disabled ?>data-user-role-id="<?= $details['id'] ?>" data-user-id="<?= $user['id'] ?>"><i class="fa-regular fa-star"></i> <?= lang('User.edit.make_default_role') ?></button>
+                                                    <?php else: ?>
+                                                        <i class="fa-solid fa-star text-warning"></i> <?= lang('User.edit.default_role') ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </table>
+                                </div>
                             <?php endif; ?>
-                            <h6><?= lang('User.edit.grant_more_role') ?></h6>
-                            <?php
-                            $options = [];
-                            foreach ($more_roles as $role) {
-                                $options[$role['role_name']] = $role['role_name'];
-                            }
-                            generate_form_field('grant_new_role', [
-                                'type'    => 'select',
-                                'options' => $options,
-                                'label_key' => lang('TablesRole.RoleMaster.role_name')
-                            ], '');
-                            ?>
-                            <div class="text-end">
-                                <button class="btn btn-primary btn-sm" id="btn-save-user-role"><i class="fa-solid fa-save"></i> <?= lang('System.menu.grant') ?></button>
-                            </div>
+                            <?php if (!empty($more_roles)) : ?>
+                                <h6><?= lang('User.edit.grant_more_role') ?></h6>
+                                <?php
+                                $options = [];
+                                foreach ($more_roles as $role) {
+                                    $options[$role['role_name']] = $role['role_name'];
+                                }
+                                generate_form_field('grant_new_role', [
+                                    'type'    => 'select',
+                                    'options' => $options,
+                                    'label_key' => lang('TablesRole.RoleMaster.role_name')
+                                ], '');
+                                ?>
+                                <div class="text-end">
+                                    <button class="btn btn-primary btn-sm" id="btn-save-user-role"><i class="fa-solid fa-save"></i> <?= lang('System.menu.grant') ?></button>
+                                </div>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>

@@ -20,9 +20,10 @@ $this->extend($layout);
                 <div class="card">
                     <div class="card-body pt-3">
                         <?php if (PERMISSION_EDITABLE == $permission_level) : ?>
-                            <a class="btn btn-outline-primary btn-sm float-end" href="<?= base_url($session->locale . '/office/user/create') ?>"><i class="fa-solid fa-plus"></i> <?= lang('User.edit.page_title_new') ?></a>
+                            <div class="text-end">
+                                <a class="btn btn-outline-primary btn-sm" href="<?= base_url($session->locale . '/office/user/create') ?>"><i class="fa-solid fa-plus"></i> <?= lang('User.edit.page_title_new') ?></a>
+                            </div>
                         <?php endif; ?>
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <div class="row">
                             <div class="col">
                                 <label for="account_type"><?= lang('TablesUser.UserMaster.account_type') ?></label>

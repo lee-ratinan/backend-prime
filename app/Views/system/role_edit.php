@@ -20,7 +20,6 @@ $this->extend($layout);
             <div class="col-lg-10">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <h6><i class="fa-solid fa-circle-info"></i> <?= lang('Role.edit.details') ?></h6>
                         <!-- FORM 1: ROLE_MASTER -->
                         <?php
@@ -59,10 +58,10 @@ $this->extend($layout);
                                 <table class="table table-sm table-striped table-hover">
                                     <thead>
                                     <tr>
-                                        <th><?= lang('Role.edit.feature') ?></th>
-                                        <th><?= lang('Role.edit.access') ?></th>
-                                        <th><?= lang('Role.edit.details') ?></th>
-                                        <th></th>
+                                        <th style="min-width:150px;"><?= lang('Role.edit.feature') ?></th>
+                                        <th style="min-width:150px;"><?= lang('Role.edit.access') ?></th>
+                                        <th style="min-width:600px;"><?= lang('Role.edit.details') ?></th>
+                                        <th style="min-width:100px;"></th>
                                     </tr>
                                     </thead>
                                     <tbody>

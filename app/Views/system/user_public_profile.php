@@ -22,7 +22,6 @@ $this->extend($layout);
                         <div class="float-end">
                             <?= retrieve_avatars($user['email_address'], $user['user_name_first'], $user['user_name_family']); ?>
                         </div>
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <?php if (!empty($user['user_profile_status'])) : ?>
                             <p class="card-text"><i class="fa-regular fa-comment-dots"></i> <?= $user['user_profile_status'] ?></p>
                         <?php endif; ?>

@@ -19,7 +19,6 @@ $this->extend($layout);
             <div class="col">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <div class="row">
                             <div class="col">
                                 <label for="activity_key"></label>
@@ -57,12 +56,12 @@ $this->extend($layout);
                             <table class="table table-sm table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th><?= lang('Log.index.table.logged_at') ?></th>
-                                    <th><?= lang('Log.index.table.performed_by') ?></th>
-                                    <th><?= lang('Log.index.table.activity') ?></th>
-                                    <th><?= lang('Log.index.table.table') ?></th>
-                                    <th><?= lang('Log.index.table.id') ?></th>
-                                    <th><?= lang('Log.index.table.details') ?></th>
+                                    <th style="min-width:200px;"><?= lang('Log.index.table.logged_at') ?></th>
+                                    <th style="min-width:150px;"><?= lang('Log.index.table.performed_by') ?></th>
+                                    <th style="min-width:150px;"><?= lang('Log.index.table.activity') ?></th>
+                                    <th style="min-width:150px;"><?= lang('Log.index.table.table') ?></th>
+                                    <th style="min-width:80px;"><?= lang('Log.index.table.id') ?></th>
+                                    <th style="min-width:200px;"><?= lang('Log.index.table.details') ?></th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>

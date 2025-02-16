@@ -19,13 +19,11 @@ $this->extend($layout);
             <div class="col">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped table-hover">
                                 <tbody>
                                 <?php foreach ($error_files as $file) : ?>
                                     <?php
-                                    // skip if not match log-20\d{2}-\d{2}-\d{2}\.log pattern
                                     if (!preg_match('/^log-\d{4}-\d{2}-\d{2}\.log$/', $file)) {
                                         continue;
                                     }

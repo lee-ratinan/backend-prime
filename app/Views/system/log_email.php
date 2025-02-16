@@ -19,7 +19,6 @@ $this->extend($layout);
             <div class="col">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <div class="row">
                             <div class="col">
                                 <label for="email_to"></label>
@@ -48,10 +47,10 @@ $this->extend($layout);
                             <table class="table table-sm table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th><?= lang('Log.email.table.created_at') ?></th>
-                                    <th><?= lang('Log.email.table.email_to') ?></th>
-                                    <th><?= lang('Log.email.table.email_subject') ?></th>
-                                    <th><?= lang('Log.email.table.email_status') ?></th>
+                                    <th style="min-width:200px;"><?= lang('Log.email.table.created_at') ?></th>
+                                    <th style="min-width:160px;"><?= lang('Log.email.table.email_to') ?></th>
+                                    <th style="min-width:160px;"><?= lang('Log.email.table.email_subject') ?></th>
+                                    <th style="min-width:300px;"><?= lang('Log.email.table.email_status') ?></th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>

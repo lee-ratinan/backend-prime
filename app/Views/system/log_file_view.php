@@ -20,22 +20,19 @@ $this->extend($layout);
             <div class="col">
                 <div class="card">
                     <div class="card-body pt-3">
-                        <h5 class="card-title"><?= $page_title ?></h5>
                         <h6><?= lang('Log.file_view.file_name') ?>: <?= $file_name ?></h6>
-                        <pre><?php
-                            $lines = explode("\n", $file_content);
-                            foreach ($lines as $line) {
-                                // highlight the log level
-                                $line = preg_replace('/(EMERGENCY|ALERT|CRITICAL|ERROR)/', '<b class="text-danger">$1</b>', $line);
-                                $line = preg_replace('/(ErrorException:)/', '<em class="text-danger">$1</em>', $line);
-                                $line = preg_replace('/(NOTICE|WARNING)/', '<b class="text-warning">$1</b>', $line);
-                                $line = preg_replace('/(DEBUG|INFORMATIONAL)/', '<b class="text-info">$1</b>', $line);
-                                echo $line . "\n";
-                            }
-                            ?></pre>
+                        <pre id="file-content"><?= $file_content ?></pre>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileContent = document.getElementById('file-content');
+            fileContent.innerHTML = fileContent.innerHTML.replace(/(ERROR|CRITICAL|ALERT|EMERGENCY)/g, '<span class="text-danger">$1</span>');
+            fileContent.innerHTML = fileContent.innerHTML.replace(/(WARNING)/g, '<span class="text-warning">$1</span>');
+            fileContent.innerHTML = fileContent.innerHTML.replace(/(DEBUG|INFO)/g, '<span class="text-info">$1</span>');
+        });
+    </script>
 <?php $this->endSection() ?>

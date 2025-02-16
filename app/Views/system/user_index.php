@@ -54,16 +54,16 @@ $this->extend($layout);
                             <table class="table table-sm table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th></th>
-                                    <th><?= lang('TablesUser.UserMaster.id') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.email_address') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.telephone_number') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.user_name') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.account_type') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.account_status') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.user_created_by') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.user_created_at') ?></th>
-                                    <th><?= lang('TablesUser.UserMaster.user_updated_at') ?></th>
+                                    <th style="min-width:80px"></th>
+                                    <th style="min-width:50px"><?= lang('TablesUser.UserMaster.id') ?></th>
+                                    <th style="min-width:220px"><?= lang('TablesUser.UserMaster.email_address') ?></th>
+                                    <th style="min-width:150px"><?= lang('TablesUser.UserMaster.telephone_number') ?></th>
+                                    <th style="min-width:200px"><?= lang('TablesUser.UserMaster.user_name') ?></th>
+                                    <th style="min-width:100px"><?= lang('TablesUser.UserMaster.account_type') ?></th>
+                                    <th style="min-width:100px"><?= lang('TablesUser.UserMaster.account_status') ?></th>
+                                    <th style="min-width:150px"><?= lang('TablesUser.UserMaster.user_created_by') ?></th>
+                                    <th style="min-width:200px"><?= lang('TablesUser.UserMaster.user_created_at') ?></th>
+                                    <th style="min-width:200px"><?= lang('TablesUser.UserMaster.user_updated_at') ?></th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>

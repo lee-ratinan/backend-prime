@@ -29,13 +29,13 @@ $this->extend($layout);
                             <table class="table table-sm table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th></th>
-                                    <th><?= lang('TablesRole.RoleMaster.id') ?></th>
-                                    <th><?= lang('TablesRole.RoleMaster.role_name') ?></th>
-                                    <th><?= lang('TablesRole.RoleMaster.role_description') ?></th>
-                                    <th><?= lang('TablesRole.RoleMaster.created_by') ?></th>
-                                    <th><?= lang('TablesRole.RoleMaster.created_at') ?></th>
-                                    <th><?= lang('TablesRole.RoleMaster.updated_at') ?></th>
+                                    <th style="min-width:50px"></th>
+                                    <th style="min-width:50px"><?= lang('TablesRole.RoleMaster.id') ?></th>
+                                    <th style="min-width:150px"><?= lang('TablesRole.RoleMaster.role_name') ?></th>
+                                    <th style="min-width:150px"><?= lang('TablesRole.RoleMaster.role_description') ?></th>
+                                    <th style="min-width:150px"><?= lang('TablesRole.RoleMaster.created_by') ?></th>
+                                    <th style="min-width:200px"><?= lang('TablesRole.RoleMaster.created_at') ?></th>
+                                    <th style="min-width:200px"><?= lang('TablesRole.RoleMaster.updated_at') ?></th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>

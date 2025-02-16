@@ -17,7 +17,7 @@ $this->extend($layout);
     </div>
     <section class="section">
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col">
                 <div class="card">
                     <div class="card-body pt-3">
                         <h6><i class="fa-solid fa-circle-info"></i> <?= lang('Role.edit.details') ?></h6>

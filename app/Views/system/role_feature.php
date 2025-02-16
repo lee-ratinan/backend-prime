@@ -24,9 +24,9 @@ $this->extend($layout);
                             <table class="table table-sm table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th><?= lang('Role.role_feature.table_header') ?></th>
+                                    <th style="min-width:150px;"><?= lang('Role.role_feature.table_header') ?></th>
                                     <?php foreach ($features as $feature) : ?>
-                                        <th><?= $feature ?></th>
+                                        <th style="min-width:120px;"><?= $feature ?></th>
                                     <?php endforeach; ?>
                                 </tr>
                                 </thead>
@@ -38,13 +38,13 @@ $this->extend($layout);
                                             <td>
                                                 <?php if (isset($accesses[$feature_name])) : ?>
                                                     <?php if (1 == $accesses[$feature_name]) : ?>
-                                                        <i class="fa-solid fa-eye"></i>
+                                                        <span class="badge rounded-pill bg-primary"><i class="fa-solid fa-eye"></i>
                                                     <?php elseif (2 == $accesses[$feature_name]) : ?>
-                                                        <i class="fa-solid fa-pencil"></i>
+                                                        <span class="badge rounded-pill bg-success"><i class="fa-solid fa-pencil"></i>
                                                     <?php endif; ?>
-                                                    <?= lang('TablesRole.RoleAccess.access_level_values.' . $accesses[$feature_name]) ?>
+                                                    <?= lang('TablesRole.RoleAccess.access_level_values.' . $accesses[$feature_name]) ?></span>
                                                 <?php else: ?>
-                                                    <?= lang('TablesRole.RoleAccess.access_level_values.0') ?>
+                                                    <span class="text-secondary"><?= lang('TablesRole.RoleAccess.access_level_values.0') ?></span>
                                                 <?php endif; ?>
                                             </td>
                                         <?php endforeach; ?>

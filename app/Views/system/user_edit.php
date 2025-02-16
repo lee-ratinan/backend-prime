@@ -42,7 +42,7 @@ $this->extend($layout);
                                     <table class="table table-sm table-striped table-hover">
                                         <?php foreach ($user_roles as $role_name => $details) : ?>
                                             <tr>
-                                                <td><?= $role_name ?></td>
+                                                <td style="min-width:120px;"><?= $role_name ?></td>
                                                 <td style="min-width:100px;">
                                                     <?php if ('N' == $details['is_default_role']) : ?>
                                                         <button class="btn btn-danger btn-sm btn-revoke-role" <?= $disabled ?>data-user-role-id="<?= $details['id'] ?>"><i class="fa-regular fa-trash-can"></i> <?= lang('System.menu.revoke') ?></button>

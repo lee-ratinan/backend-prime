@@ -107,7 +107,7 @@ class Organization extends BaseController
                         'is_image[logo]',
                         'mime_in[logo,image/jpg,image/jpeg,image/png]',
                         'max_size[logo,300]',
-                        'max_dims[logo,1000,100]',
+                        'max_dims[logo,800,200]',
                     ],
                 ],
             ];
@@ -125,15 +125,15 @@ class Organization extends BaseController
                 list($width, $height) = getimagesize($img->getPathname());
                 $new_width            = $width;
                 $new_height           = $height;
-                if ($height > 90) {
-                    $ratio = $height / 90;
-                    $new_width = $width / $ratio;
-                    $new_height = 90;
+                if ($height > 100) {
+                    $ratio      = $height / 100;
+                    $new_width  = intval($width / $ratio);
+                    $new_height = 100;
                 }
-                if ($new_width > 600) {
-                    $ratio = $new_width / 600;
-                    $new_width = 600;
-                    $new_height = $new_height / $ratio;
+                if ($new_width > 800) {
+                    $ratio      = $new_width / 800;
+                    $new_width  = 800;
+                    $new_height = intval($new_height / $ratio);
                 }
                 $file_type            = $img->getClientMimeType();
                 $file_name            = 'logo_' . preg_replace('/[^a-z0-9]/i', '', strtolower($session->organization['app_name'])) . '.png';

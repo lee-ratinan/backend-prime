@@ -4,7 +4,7 @@ $layout = (!empty($layout) ? $layout : 'system/_layout_office');
 $this->extend($layout);
 ?>
 <?= $this->section('content') ?>
-    <?php $session = session(); ?>
+<?php $session = session(); ?>
     <div class="pagetitle">
         <h1><?= $page_title ?></h1>
         <nav>
@@ -58,6 +58,16 @@ $this->extend($layout);
                         </div>
                         <!-- UPLOAD LOGO -->
                         <h6><i class="fa-solid fa-cloud-arrow-up"></i> <?= lang('Organization.heading_2') ?></h6>
+                        <?php
+                        $clean_name = preg_replace('/[^a-z0-9]/i', '', strtolower($session->app_name));
+                        $file_path  = WRITEPATH . 'uploads/logo_' . $clean_name . '.png';
+                        if (file_exists($file_path)) {
+                            $file_url   = base_url('file/logo_' . $clean_name . '.png');
+                            echo '<p>' . lang('Organization.files.current_logo') . '<br><img class="img-fluid" src="' . $file_url . '" alt="' . $session->app_name . '" /></p>';
+                        } else {
+                            echo '<p>' . lang('Organization.files.no_logo') . '</p>';
+                        }
+                        ?>
                         <form id="form-upload-logo" action="<?= base_url($session->locale . '/office/organization') ?>" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="script_action" value="upload-logo"/>
                             <input type="file" id="logo" name="logo" class="form-control my-3"/>
@@ -68,6 +78,14 @@ $this->extend($layout);
                         </form>
                         <!-- UPLOAD FAVICON -->
                         <h6><i class="fa-solid fa-cloud-arrow-up"></i> <?= lang('Organization.heading_3') ?></h6>
+                        <?php
+                        if (file_exists(WRITEPATH . 'uploads/favicon.jpg')) {
+                            $file_url   = base_url('file/favicon.jpg');
+                            echo '<p>' . lang('Organization.files.current_favicon') . '<br><img style="height:20px" src="' . $file_url . '" alt="Favicon" /></p>';
+                        } else {
+                            echo '<p>' . lang('Organization.files.no_favicon') . '</p>';
+                        }
+                        ?>
                         <form id="form-upload-favicon" action="<?= base_url($session->locale . '/office/organization') ?>" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="script_action" value="upload-favicon"/>
                             <input type="file" id="favicon" name="favicon" class="form-control my-3"/>

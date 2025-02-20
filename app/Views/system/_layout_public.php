@@ -19,6 +19,7 @@
     <link href="<?= base_url('assets/vendor/toastrjs/toastr.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
+    <style>.lock-screen {position:fixed;width:100%;height:100%;top:0;left:0;background-color:rgba(200,200,200,0.75);z-index:9999;display:none;text-align:center;padding-top:100px;}</style>
     <!-- =======================================================
     * Template Name: NiceAdmin
     * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -45,6 +46,7 @@
     </div>
 </main>
 <a href="<?= base_url('#') ?>" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div class="lock-screen"><h1><?= lang('System.status_message.lock_screen') ?></h1></div>
 <script src="<?= base_url('assets/vendor/jquery/jquery-3.7.1.min.js') ?>"></script>
 <script src="<?= base_url('assets/vendor/fontawesome/js/all.min.js') ?>"></script>
 <script src="<?= base_url('assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
@@ -57,5 +59,6 @@
 <script src="<?= base_url('assets/vendor/php-email-form/validate.js') ?>"></script>
 <script src="<?= base_url('assets/vendor/toastrjs/toastr.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
+<script>$(function () { setTimeout(() => { $('.lock-screen').show(); }, 300000); });</script>
 </body>
 </html>

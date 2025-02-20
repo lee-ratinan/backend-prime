@@ -22,7 +22,8 @@ return [
         'unauthorized_access'      => 'Unauthorized Access',
         'please_check_empty_field' => 'Please ensure all mandatory fields are filled.',
         'email_address_invalid'    => 'The email address is invalid.',
-        'generic_error'            => 'Sorry! Something went wrong. Please try again.'
+        'generic_error'            => 'Sorry! Something went wrong. Please try again.',
+        'lock_screen'              => 'Screen locked. Please refresh.',
     ],
     'dashboard'         => [
         'page_title' => 'Dashboard',

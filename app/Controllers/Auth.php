@@ -51,6 +51,21 @@ class Auth extends BaseController
         $mailgun->sendEmail($session->user['email_address'], lang('Auth.login.otp.email.subject'), lang('Auth.login.otp.email.body', [$session->user['user_name_first'], $otp]));
     }
 
+    /**
+     * Set the organization session
+     * @return void
+     */
+    private function setOrganizationSession(): void
+    {
+        $session      = session();
+        $org_model    = new OrganizationMasterModel();
+        $organization = $org_model->getOrganization();
+        $app_logo     = retrieve_app_logo($organization['app_name']);
+        $session->set(['organization' => $organization]);
+        $session->set(['app_name' => $organization['app_name']]);
+        $session->set(['app_logo' => $app_logo]);
+    }
+
     /************************************************************************
      * LOGIN FLOW
      * GET /login                    - login():RedirectResponse|string - Login page
@@ -72,12 +87,7 @@ class Auth extends BaseController
         $session       = session();
         $organization  = $session->organization;
         if (empty($organization)) {
-            $org_model    = new OrganizationMasterModel();
-            $organization = $org_model->getOrganization();
-            $app_logo     = retrieve_app_logo($organization['app_name']);
-            $session->set(['organization' => $organization]);
-            $session->set(['app_name' => $organization['app_name']]);
-            $session->set(['app_logo' => $app_logo]);
+            $this->setOrganizationSession();
         }
         if ($session->logged_in) {
             return redirect()->to(base_url($session->locale . '/office/dashboard'));
@@ -371,6 +381,10 @@ class Auth extends BaseController
      */
     public function forgotPassword(): string
     {
+        $session = session();
+        if (empty($session->organization)) {
+            $this->setOrganizationSession();
+        }
         $data = [
             'page_title' => lang('Auth.forgot_password.page_title')
         ];
@@ -424,6 +438,9 @@ class Auth extends BaseController
         $session        = session();
         if (empty($session->password_reset_token)) {
             return redirect()->to(base_url('forgot-password'));
+        }
+        if (empty($session->organization)) {
+            $this->setOrganizationSession();
         }
         $session_data   = explode(';', $session->password_reset_token);
         $session_email  = @$session_data[0];
@@ -507,6 +524,10 @@ class Auth extends BaseController
      */
     public function register(): string
     {
+        $session = session();
+        if (empty($session->organization)) {
+            $this->setOrganizationSession();
+        }
         // Reserved for future use, not allowed the registration yet
         $data = [
             'page_title' => lang('Auth.register.page_title')
